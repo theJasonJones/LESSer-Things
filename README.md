@@ -12,6 +12,9 @@ A collection of mixins and many other random things I find I use over and over.
 //Full Width Images
 .bg-image 		     { background-repeat: no-repeat; background-size: cover; background-position: center center; }
 
+//Image Overlay
+.basic-overlay 		{ background-color: rgba(0, 0, 0, 0.7); position: absolute; top: 0px; left: 0px; z-index: 2; width: 100%; height: 100%;} 
+
 //Horizontal & Vertical center: (Reminder: Parent element needs to be position: relative; )
 .center-hv 		    { position: absolute; top: 50%; left: 50%; .translate(-50%; -50%); }
 
@@ -22,8 +25,63 @@ A collection of mixins and many other random things I find I use over and over.
 //All-in-one text mixin
 .txt(@fs:18px; @lh:30px; @mb:initial)   { .fs(@fs); .lh(@lh); margin-bottom:@mb; }
 
-// Sizing shortcuts
+// Buttons
+.button {
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-weight: @btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  white-space: nowrap;
+  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+  .user-select(none);
 
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      .tab-focus();
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    color: @btn-default-color;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    pointer-events: none; // Future-proof disabling of clicks
+    .opacity(.65);
+    .box-shadow(none);
+  }
+}
+
+// btn sizes
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}
+
+// Sizing shortcuts
 .size(@width; @height) {
   width: @width;
   height: @height;
@@ -38,6 +96,19 @@ A collection of mixins and many other random things I find I use over and over.
   -webkit-transition: @transition;
        -o-transition: @transition;
           transition: @transition;
+}
+
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 // Responsive images (Thanks BS)
@@ -61,10 +132,10 @@ A collection of mixins and many other random things I find I use over and over.
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down
   }
 
-  // Vertical gradient, from top to bottom
-  //
-  // Creates two color stops, start and end, by specifying a color and position for each color stop.
-  // Color stops are not available in IE9 and below.
+// Vertical gradient, from top to bottom
+//
+// Creates two color stops, start and end, by specifying a color and position for each color stop.
+// Color stops are not available in IE9 and below.
 .vertical-g(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Safari 5.1-6, Chrome 10+
     background-image: -o-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Opera 12
