@@ -4,7 +4,7 @@ A collection of mixins and many other random things I find I use over and over.
 
 ```less
 //Format
-.center              { margin-right: auto; margin-left: auto; }
+.center              { display: block; margin-right: auto; margin-left: auto; }
 .txt-center     	 { text-align: center; }
 .txt-italic 	     { font-style: italic; }
 .uppercase		     { text-transform: uppercase; }
@@ -29,7 +29,7 @@ A collection of mixins and many other random things I find I use over and over.
 .button {
   display: inline-block;
   margin-bottom: 0; // For input.btn
-  font-weight: @btn-font-weight;
+  font-weight: 400;
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
@@ -91,6 +91,17 @@ A collection of mixins and many other random things I find I use over and over.
   .size(@size; @size);
 }
 
+// WebKit-style focus
+
+.tab-focus() {
+  // Default
+  outline: thin dotted;
+  // WebKit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+
 // Transitions
 .transition(@transition) {
   -webkit-transition: @transition;
@@ -99,7 +110,6 @@ A collection of mixins and many other random things I find I use over and over.
 }
 
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
-
 .clearfix() {
   &:before,
   &:after {
@@ -118,6 +128,21 @@ A collection of mixins and many other random things I find I use over and over.
   display: @display;
   max-width: 100%; // Part 1: Set a maximum relative to the parent
   height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+//Box Shadow
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+          box-shadow: @shadow;
+}
+
+// Opacity
+
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
 }
 
 // Horizontal gradient, from left to right
