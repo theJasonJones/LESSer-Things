@@ -13,7 +13,7 @@ A collection of mixins and many other random things I find I use over and over.
 .bg-image 		     { background-repeat: no-repeat; background-size: cover; background-position: center center; }
 
 //Image Overlay
-.basic-overlay 		{ background-color: rgba(0, 0, 0, 0.7); position: absolute; top: 0px; left: 0px; z-index: 2; width: 100%; height: 100%;} 
+.basic-overlay 		{ background-color: #000; opacity: 0.8; position: absolute; top: 0px; left: 0px; z-index: 2; width: 100%; height: 100%;} 
 
 //Horizontal & Vertical center: (Reminder: Parent element needs to be position: relative; )
 .center-hv 		    { position: absolute; top: 50%; left: 50%; .translate(-50%; -50%); }
