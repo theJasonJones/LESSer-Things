@@ -4,7 +4,7 @@ A collection of mixins and many other random things I find I use over and over.
 
 ```less
 //Format
-.center              { display: block; margin-right: auto; margin-left: auto; }
+.center            { display: block; margin-right: auto; margin-left: auto; }
 .txt-center     	 { text-align: center; }
 .txt-italic 	     { font-style: italic; }
 .uppercase		     { text-transform: uppercase; }
@@ -12,11 +12,14 @@ A collection of mixins and many other random things I find I use over and over.
 //Full Width Images
 .bg-image 		     { background-repeat: no-repeat; background-size: cover; background-position: center center; }
 
-//Image Overlay
-.basic-overlay 		{ background-color: #000; .opacity(0.8); position: absolute; top: 0px; left: 0px; z-index: 2; width: 100%; height: 100%;} 
-
-//Horizontal & Vertical center: (Reminder: Parent element needs to be position: relative; )
+//Horizontal & Vertical center: (Protip: Parent element needs to be position: relative; )
 .center-hv 		    { position: absolute; top: 50%; left: 50%; .translate(-50%; -50%); }
+
+//Image Overlay
+.basic-overlay(@color: #000; @opacity: 0.4) 		{ background-color: @color; .opacity(@opacity); position: absolute; top: 0px; left: 0px; z-index: 2; width: 100%; height: 100%;} 
+
+//Wrapper to place over the overlay (good for text and buttons)
+.overlay-top { .center-hv; z-index: 3; }
 
 // Table Centering 
 .table-wrap 										{ .square(100%); display:table; }
@@ -28,6 +31,10 @@ A collection of mixins and many other random things I find I use over and over.
 
 //All-in-one text mixin
 .txt(@fs:18px; @lh:30px; @mb:initial)   { .fs(@fs); .lh(@lh); margin-bottom:@mb; }
+
+
+/**** VENDOR STYLES (Hence the sudden change in style) ****/
+
 
 // Buttons
 .button {
