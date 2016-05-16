@@ -8,6 +8,7 @@ A collection of mixins and many other random things I find I use over and over.
 .txt-center     	 { text-align: center; }
 .txt-italic 	     { font-style: italic; }
 .uppercase		     { text-transform: uppercase; }
+.bold 						 { font-weight: bold; }
 
 //Full Width Images
 .bg-image 		     { background-repeat: no-repeat; background-size: cover; background-position: center center; }
