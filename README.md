@@ -10,7 +10,7 @@ A collection of mixins and many other random things I find I use over and over.
 .uppercase         { text-transform: uppercase; }
 .bold              { font-weight: bold; }
 
-//Full Width Images
+//Background/Banner Images
 .bg-image 		     { background-repeat: no-repeat; background-size: cover; background-position: center center; }
 
 //Horizontal & Vertical center: (Protip: Parent element needs to be position: relative; )
@@ -85,7 +85,7 @@ A collection of mixins and many other random things I find I use over and over.
   }
 }
 
-// btn sizes
+// Button sizes
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
   padding: @padding-vertical @padding-horizontal;
   font-size: @font-size;
@@ -122,6 +122,7 @@ A collection of mixins and many other random things I find I use over and over.
           transition: @transition;
 }
 
+// Clearfix for badly behaving floats
 // Source: http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix() {
   &:before,
@@ -134,7 +135,7 @@ A collection of mixins and many other random things I find I use over and over.
   }
 }
 
-// Responsive images (Thanks BS)
+// Responsive images (Thanks to Bootstrap)
 //
 // Keep images from scaling beyond the width of their parents.
 .img-responsive(@display: block) {
@@ -150,7 +151,6 @@ A collection of mixins and many other random things I find I use over and over.
 }
 
 // Opacity
-
 .opacity(@opacity) {
   opacity: @opacity;
   // IE8 filter
@@ -162,6 +162,7 @@ A collection of mixins and many other random things I find I use over and over.
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
 // Color stops are not available in IE9 and below.
+//
 .horizontal-g(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // Safari 5.1-6, Chrome 10+
     background-image: -o-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // Opera 12
@@ -174,6 +175,7 @@ A collection of mixins and many other random things I find I use over and over.
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
 // Color stops are not available in IE9 and below.
+//
 .vertical-g(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Safari 5.1-6, Chrome 10+
     background-image: -o-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Opera 12
