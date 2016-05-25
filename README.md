@@ -115,6 +115,7 @@ A collection of mixins and many other random things I find I use over and over.
 
 
 // Transitions
+//Example: .transition( all .2s linear);
 .transition(@transition) {
   -webkit-transition: @transition;
        -o-transition: @transition;
